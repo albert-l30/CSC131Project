@@ -4,10 +4,6 @@
  */
 package UserJFrames;
 
-/**
- *
- * @author alber
- */
 public class Exam extends javax.swing.JFrame {
 
     /**
