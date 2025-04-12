@@ -7,11 +7,6 @@ package UserJFrames;
 import java.io.*;
 import java.nio.file.*;
 
-
-/**
- *
- * @author alber
- */
 public class CreateAccount extends javax.swing.JFrame {
 
     /**
