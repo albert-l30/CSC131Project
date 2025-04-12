@@ -11,10 +11,6 @@ import java.nio.file.Files;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author alber
- */
 public class Home extends javax.swing.JFrame {
 
     /**
