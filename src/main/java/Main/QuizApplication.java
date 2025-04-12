@@ -4,10 +4,6 @@
 
 package Main;
 
-/**
- *
- * @author alber
- */
 public class QuizApplication {
 
     public static void main(String[] args) {
