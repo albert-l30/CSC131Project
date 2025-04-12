@@ -4,10 +4,6 @@
  */
 package UserJFrames;
 
-/**
- *
- * @author alber
- */
 public class Credits extends javax.swing.JFrame {
 
     /**
