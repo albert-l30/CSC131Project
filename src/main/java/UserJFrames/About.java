@@ -5,10 +5,6 @@ package UserJFrames;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author alber
- */
 public class About extends javax.swing.JFrame {
 
     /**
