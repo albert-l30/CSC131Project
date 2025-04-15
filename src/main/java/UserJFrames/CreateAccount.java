@@ -28,13 +28,15 @@ public class CreateAccount extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         verifyPasswordField = new javax.swing.JPasswordField();
         accountTextField = new javax.swing.JTextField();
-        createAccountButton = new javax.swing.JButton();
         accountLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         verifyPasswordLabel = new javax.swing.JLabel();
         ErrorPanel = new javax.swing.JPanel();
         ErrorLabel1 = new javax.swing.JLabel();
         ErrorLabel2 = new javax.swing.JLabel();
+        ErrorPanel1 = new javax.swing.JPanel();
+        createAccountButton = new javax.swing.JButton();
+        administratorCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,14 +51,6 @@ public class CreateAccount extends javax.swing.JFrame {
         accountTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         accountTextField.setPreferredSize(new java.awt.Dimension(160, 22));
 
-        createAccountButton.setText("Create");
-        createAccountButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createAccountButtonActionPerformed(evt);
-            }
-        });
-
         accountLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         accountLabel.setText("Account Name");
 
@@ -66,9 +60,11 @@ public class CreateAccount extends javax.swing.JFrame {
         verifyPasswordLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         verifyPasswordLabel.setText("Enter Password Again");
 
+        ErrorLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ErrorLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ErrorLabel1.setText("");
 
+        ErrorLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ErrorLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ErrorLabel2.setText("");
 
@@ -92,13 +88,51 @@ public class CreateAccount extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        createAccountButton.setText("Create");
+        createAccountButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAccountButtonActionPerformed(evt);
+            }
+        });
+
+        administratorCheckBox.setText("Administrator");
+        if (administratorExists()) {        
+
+            administratorCheckBox.setEnabled(false);    
+
+        }
+
+        javax.swing.GroupLayout ErrorPanel1Layout = new javax.swing.GroupLayout(ErrorPanel1);
+        ErrorPanel1.setLayout(ErrorPanel1Layout);
+        ErrorPanel1Layout.setHorizontalGroup(
+            ErrorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ErrorPanel1Layout.createSequentialGroup()
+                .addContainerGap(153, Short.MAX_VALUE)
+                .addGroup(ErrorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(administratorCheckBox)
+                    .addGroup(ErrorPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(createAccountButton)))
+                .addContainerGap(176, Short.MAX_VALUE))
+        );
+        ErrorPanel1Layout.setVerticalGroup(
+            ErrorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ErrorPanel1Layout.createSequentialGroup()
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(administratorCheckBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createAccountButton))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(170, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ErrorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -109,16 +143,13 @@ public class CreateAccount extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(verifyPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(createAccountButton))
-                            .addComponent(accountTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(94, Short.MAX_VALUE))
+                            .addComponent(accountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(accountLabel))
@@ -131,16 +162,24 @@ public class CreateAccount extends javax.swing.JFrame {
                     .addComponent(verifyPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(verifyPasswordLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createAccountButton)
+                .addComponent(ErrorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ErrorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean administratorExists() {
+    
+         Path administratorFile = Paths.get(System.getProperty("user.home"), "pass", "administrator.log");
+         
+         return Files.exists(administratorFile);
+    
+    }
+    
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
         
         /* Create a path for the purpose of storing the account name and password entered. "user.home" specifies the home folder in 
@@ -148,8 +187,7 @@ public class CreateAccount extends javax.swing.JFrame {
         
         Path passwordFile = Paths.get(System.getProperty("user.home"), "pass", "password.log");
         
-         /* Check if account name given matches with any account names already created. Uses the binary search algorithm 
-        for this */
+         // Check if account name given matches with any account names already created.
          
         try {
             
@@ -178,102 +216,32 @@ public class CreateAccount extends javax.swing.JFrame {
         
         }
         
-        // Check if the path (and the file specified by the path) does NOT exist in this computer's file system
+        // Check if the user wants to designate the account they want to create as an administrator account
         
-        if (Files.notExists(passwordFile)) {
-            
-            try {
-                
-                /* Retrieve a string that represents the passwordFile path, EXCEPT for the file of the path, which 
-                is not included in the string. */
-                
-                String parentDirectoryString = passwordFile.subpath(0, passwordFile.getNameCount() - 1).toString();
-                
-                /* Create path that is the same as the passwordFile path except that the file of the path is not included
-                in this new path. */
-                
-                Path passwordDirectory = Paths.get(passwordFile.getRoot().toString(), parentDirectoryString);
-                
-                // Check if passwordDirectory path exists in the file system. If it does not, create it.
-                
-                if (Files.notExists(passwordDirectory))
-                    Files.createDirectory(passwordDirectory);
-                
-                // Create file specified by passwordFile path
-                
-                Files.createFile(passwordFile);
+        if (administratorCheckBox.isSelected()) {
+        
+            Path administratorFile = Paths.get(System.getProperty("user.home"), "pass", "administrator.log");
+            try (BufferedWriter writer = Files.newBufferedWriter(administratorFile)) {
+        
+                writer.write(accountTextField.getText());
+        
             }
-            
+        
             catch(IOException x) {
-                
+        
                 System.err.format("IOException: %s%n", x);
+        
             }
-        }
-        
-        /* The WRITE enum constant (and no others) of the StandardOpenOption enum class needs to be used if 
-        you only want to overwrite specific lines in a file, and not the entire file every time you use the write 
-        instance method of the BufferedWriter class. */
-        
-        try(BufferedReader reader = Files.newBufferedReader(passwordFile); BufferedWriter writer = 
-                Files.newBufferedWriter(passwordFile, StandardOpenOption.WRITE)) {
-        
-            // Read the first line of password file to get the current number of accounts
-            
-            String numOfAccountsString = reader.readLine();
-            Integer numOfAccounts;
-            
-            /* If the file has not been written to yet, then no accounts (or passwords) have been stored in the file yet.
-            Therefore, the current number of accounts created is 0. */
-            
-            if (numOfAccountsString == null)
-                numOfAccounts = 0;                                          /* The literal int value '0' is autoboxed to an Integer
-                                                                            value. */
-           
-            /* If the file has been written to by the program, then there should be an integer on the first line of the 
-            file that represents the number of accounts created and stored in the file. */
-            
-            else {
-                
-                numOfAccounts = Integer.decode(numOfAccountsString);        // Convert the first line of file to an Integer
-                
-            }
-            
-            // If the number of accounts created and stored is 0, then write the number '1' to the first line of the file
-            
-            if (numOfAccounts == 0) {                                       // Unboxes 'Integer' value to 'int' and compares it to 0
-            
-                writer.write("1");
-                writer.newLine();
-                        
-            } 
-            
-            /* If the number of accounts created is greater than 0, add 1 to the number of accounts and write the number 
-            to the first line of the file */
-            
-            else {
-                
-                numOfAccounts += 1;
-                numOfAccountsString = numOfAccounts.toString();
-                writer.write(numOfAccountsString, 0, numOfAccountsString.length());                
-                
-            }
-            
-        }
-        
-        catch (IOException x) {
-            
-            System.err.format("IOException: %s%n", x);
-            
         }
         
         /* Store account name and password entered by user into password file. Make sure to use the APPEND enum constant 
         so as to not overwrite the text that is already in the file. */
         
-        try (BufferedWriter writer = Files.newBufferedWriter(passwordFile, StandardOpenOption.APPEND)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(passwordFile, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
             
-            writer.write(accountTextField.getText(), 0, accountTextField.getText().length());
+            writer.write(accountTextField.getText());
             writer.newLine();
-            writer.write(passwordField.getPassword(), 0, passwordField.getPassword().length);
+            writer.write(passwordField.getPassword());
             writer.newLine();
             
         } 
@@ -283,141 +251,39 @@ public class CreateAccount extends javax.swing.JFrame {
             System.err.format("IOException: %s%n", x);
             
         }
+        
+        dispose();     // Close the window                                                         
+        
     }//GEN-LAST:event_createAccountButtonActionPerformed
 
-    // Method that returns 'true' if the given account name exists in the password file and false if it doesn't
+    // Returns 'true' if the given account name exists in the password file and false if it doesn't
     
-    static boolean accountNameTaken(Path passwordFile, String accountName) throws IOException {
+    private static boolean accountNameTaken(Path passwordFile, String accountName) throws IOException {
     
-        // Retrieve the (unsorted) list of account names in the file
+        BufferedReader reader = Files.newBufferedReader(passwordFile);
+        String accountNameMatch = reader.readLine();
+        while (accountNameMatch != null) {
         
-        String[] listOfAccountNames = getAccountNames(passwordFile);
-        
-        if (listOfAccountNames == null) // If there are no account names in the file
-            return false;     
-        
-        // Sort list 
-        
-        String[] sortedAccountNames = sortAccountNames(listOfAccountNames);
-        
-        /* Given that the elements in list are sorted in alphabetical order, use the Binary Search algorithm to search 
-        for given account name in list */
-        
-        int low = 0;
-        int high = sortedAccountNames.length - 1;
-        int mid;
-        
-        while (low <= high) {
-        
-            mid = high + low / 2;
-            if (sortedAccountNames[mid].equalsIgnoreCase(accountName))
+            if (accountName.equalsIgnoreCase(accountNameMatch))
                 return true;
-            else if (accountName.compareToIgnoreCase(sortedAccountNames[mid]) < 0)
-                high = mid - 1;
-            else
-                low = mid + 1;
+            
+            reader.readLine();                          // Skip over password
+            accountNameMatch = reader.readLine();       // Read next account name     
+        
         }
         
         return false;
-    }
-    
-    // Returns an (unsorted) array of all the account names stored in the password file
-    
-    static String[] getAccountNames(Path passwordFile) throws IOException {
-    
-        BufferedReader reader = Files.newBufferedReader(passwordFile);
         
-        // Retrieve the number of accounts stored in file
-        
-        String numOfAccountsString = reader.readLine();
-        
-        if (numOfAccountsString == null) // If no number is present
-            return null;
-        
-        // Create array for the purpose of storing names
-        
-        int numOfAccounts = Integer.parseInt(numOfAccountsString);
-        String[] listOfAccountNames = new String[numOfAccounts];
-        for (int i = 0; i < listOfAccountNames.length; i++) {
-            
-            listOfAccountNames[i] = reader.readLine();
-            
-            // Skip over password
-            
-            reader.readLine();
-                
-        }
-        
-        return listOfAccountNames;
-    
-    }
-    
-    /* Method uses insertion sort algorithm to sort the given list in alphabetical order. compareToIgnoreCase() method 
-    needs to be used instead of compareTo() method. */
-    
-    static String[] sortAccountNames(String[] accountNames) {
-    
-        String w;
-        for (int i = 0; i < accountNames.length - 1; i++) {
-        
-            int j = i + 1;
-            w = accountNames[j];
-            
-            while (j > 0 && w.compareToIgnoreCase(accountNames[j - 1]) < 0) {
-            
-                accountNames[j] = accountNames[j - 1];
-                j--;
-            
-            }
-        
-            accountNames[j] = w;
-        }
-    
-        return accountNames;
-        
-    }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreateAccount().setVisible(true);
-            }
-        });
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorLabel1;
     private javax.swing.JLabel ErrorLabel2;
     private javax.swing.JPanel ErrorPanel;
+    private javax.swing.JPanel ErrorPanel1;
     private javax.swing.JLabel accountLabel;
     private javax.swing.JTextField accountTextField;
+    private javax.swing.JCheckBox administratorCheckBox;
     private javax.swing.JButton createAccountButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
