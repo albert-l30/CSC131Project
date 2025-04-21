@@ -335,6 +335,48 @@ public class CreateExam extends javax.swing.JFrame {
     }
     
     private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
+        Path quizFolder = null;
+
+        try {
+
+            quizFolder = Paths.get(System.getProperty("user.home"), "QuizApplication", "Quizzes", quizName);
+            Files.createDirectories(quizFolder);
+
+        }
+
+        catch(IOException x) {
+
+            System.err.format("IOException: %s%n", x);
+
+        }
+
+        try (BufferedWriter overwriteQuantity = Files.newBufferedWriter(quizFolder.resolve("quantity.log"), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+             BufferedWriter appendQuestions = Files.newBufferedWriter(quizFolder.resolve("questions.log"), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+             BufferedWriter appendCorrectAnswers = Files.newBufferedWriter(quizFolder.resolve("answers.log"), StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+
+            overwriteQuantity.write((++numQuestions).toString());
+
+            appendQuestions.write(questionTextField.getText());
+            appendQuestions.newLine();
+            appendQuestions.write(answerTextField1.getText());
+            appendQuestions.newLine();
+            appendQuestions.write(answerTextField2.getText());
+            appendQuestions.newLine();
+            appendQuestions.write(answerTextField3.getText());
+            appendQuestions.newLine();
+            appendQuestions.write(answerTextField4.getText());
+            appendQuestions.newLine();
+
+            appendCorrectAnswers.write(correctAnswer());
+            appendCorrectAnswers.newLine();
+
+        }
+
+        catch(IOException x) {
+
+            System.err.format("IOException: %s%n", x);
+
+        }
         dispose();
     }//GEN-LAST:event_finishButtonActionPerformed
 
