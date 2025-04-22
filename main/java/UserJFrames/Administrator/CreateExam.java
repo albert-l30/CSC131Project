@@ -335,6 +335,17 @@ public class CreateExam extends javax.swing.JFrame {
     }
     
     private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
+        if (textFieldBlank())
+            return;
+
+        // If no check box was selected
+        if (!answerCheckBox1.isSelected() && !answerCheckBox2.isSelected() &&
+                !answerCheckBox3.isSelected() && !answerCheckBox4.isSelected()) {
+
+            javax.swing.JOptionPane.showMessageDialog(this, errorDialogLabel, "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+
+        }
         Path quizFolder = null;
 
         try {
