@@ -1,23 +1,48 @@
 package QuizApplicationPackage;
 
+import javax.swing.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Files;
+import java.net.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame
+{
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ErrorLabel;
+    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JLabel accountNameLabel;
+    private javax.swing.JTextField accountTextField;
+    private javax.swing.JMenuItem contactMenuItem;
+    private javax.swing.JButton createAccountButton;
+    private javax.swing.JLabel createAccountLabel1;
+    private javax.swing.JLabel createAccountLabel2;
+    private javax.swing.JPanel createAccountPanel;
+    private javax.swing.JMenuItem creditsMenuItem;
+    private javax.swing.JMenuBar homeMenuBar;
+    private javax.swing.JMenu infoMenu;
+    private javax.swing.JMenu socialmediaMenu;              // Social Media drop down menu for clickable links
+    private javax.swing.JMenuItem instagramMenuItem;        // Instagram button
+    private javax.swing.JMenuItem githubMenuItem;           // Github button
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel passwordLabel;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form HomeJFrame
      */
-    public Login() {
+    public Login()
+    {
         initComponents();
     }
 
@@ -28,7 +53,8 @@ public class Login extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         createAccountPanel = new javax.swing.JPanel();
         createAccountLabel1 = new javax.swing.JLabel();
@@ -45,6 +71,9 @@ public class Login extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
         contactMenuItem = new javax.swing.JMenuItem();
         creditsMenuItem = new javax.swing.JMenuItem();
+        socialmediaMenu = new javax.swing.JMenu();
+        instagramMenuItem = new javax.swing.JMenuItem();
+        githubMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -56,8 +85,10 @@ public class Login extends javax.swing.JFrame {
         createAccountLabel2.setText("Click the 'Create Account' button below.");
 
         createAccountButton.setText("Create Account");
-        createAccountButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        createAccountButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 createAccountButtonActionPerformed(evt);
             }
         });
@@ -65,31 +96,31 @@ public class Login extends javax.swing.JFrame {
         javax.swing.GroupLayout createAccountPanelLayout = new javax.swing.GroupLayout(createAccountPanel);
         createAccountPanel.setLayout(createAccountPanelLayout);
         createAccountPanelLayout.setHorizontalGroup(
-            createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createAccountPanelLayout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
-                .addGroup(createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createAccountPanelLayout.createSequentialGroup()
-                        .addGroup(createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(createAccountLabel2)
-                            .addGroup(createAccountPanelLayout.createSequentialGroup()
-                                .addComponent(createAccountButton)
-                                .addGap(50, 50, 50)))
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createAccountPanelLayout.createSequentialGroup()
-                        .addComponent(createAccountLabel1)
-                        .addGap(113, 113, 113))))
+                createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(createAccountPanelLayout.createSequentialGroup()
+                                .addContainerGap(128, Short.MAX_VALUE)
+                                .addGroup(createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createAccountPanelLayout.createSequentialGroup()
+                                                .addGroup(createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(createAccountLabel2)
+                                                        .addGroup(createAccountPanelLayout.createSequentialGroup()
+                                                                .addComponent(createAccountButton)
+                                                                .addGap(50, 50, 50)))
+                                                .addGap(67, 67, 67))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createAccountPanelLayout.createSequentialGroup()
+                                                .addComponent(createAccountLabel1)
+                                                .addGap(113, 113, 113))))
         );
         createAccountPanelLayout.setVerticalGroup(
-            createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(createAccountPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(createAccountLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(createAccountLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(createAccountButton)
-                .addContainerGap())
+                createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(createAccountPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(createAccountLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                                .addComponent(createAccountLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                                .addComponent(createAccountButton)
+                                .addContainerGap())
         );
 
         accountNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -98,15 +129,19 @@ public class Login extends javax.swing.JFrame {
         passwordLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         passwordLabel.setText("Enter Password");
 
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        passwordField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 passwordFieldActionPerformed(evt);
             }
         });
 
         loginButton.setText("Log in");
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        loginButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 loginButtonActionPerformed(evt);
             }
         });
@@ -117,127 +152,161 @@ public class Login extends javax.swing.JFrame {
         infoMenu.setText("Info");
 
         aboutMenuItem.setText("About");
-        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 aboutMenuItemActionPerformed(evt);
             }
         });
         infoMenu.add(aboutMenuItem);
 
         contactMenuItem.setText("Contact");
-        contactMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        contactMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 contactMenuItemActionPerformed(evt);
             }
         });
         infoMenu.add(contactMenuItem);
 
         creditsMenuItem.setText("Credits");
-        creditsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        creditsMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 creditsMenuItemActionPerformed(evt);
             }
         });
         infoMenu.add(creditsMenuItem);
 
-        homeMenuBar.add(infoMenu);
+        socialmediaMenu.setText("Social Media");
+        socialmediaMenu.add(instagramMenuItem);
+        socialmediaMenu.add(githubMenuItem);
 
+        instagramMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/ig.png")));
+        instagramMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                instagramMenuItemActionPerformed(evt);
+            }
+        });
+
+        githubMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/github.png")));
+        githubMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                githubMenuItemActionPerformed(evt);
+            }
+        });
+
+        homeMenuBar.add(infoMenu);
+        homeMenuBar.add(socialmediaMenu);
         setJMenuBar(homeMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(189, 189, 189)
-                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(passwordField)))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(accountNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(accountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(createAccountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                                .addContainerGap(141, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(189, 189, 189)
+                                                                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(passwordField)))
+                                                .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(accountNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(accountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(createAccountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(accountNameLabel)
-                    .addComponent(accountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createAccountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(87, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(accountNameLabel)
+                                        .addComponent(accountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(passwordLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(loginButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(createAccountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed
+    private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_createAccountButtonActionPerformed
         new CreateAccount().setVisible(true);
     }//GEN-LAST:event_createAccountButtonActionPerformed    
-    
+
     // Returns null if unsuccessful
-    private User attemptLogin(String name, String password) {
-        
+    private User attemptLogin(String name, String password)
+    {
+
         // If user is found and password matches, return user
         User user = User.load(name);
         if (User.exists(user) && user.hasPassword(password)) return user;
-        
+
         // Could not log in
         return null;
     }
-    
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt)
+    {//GEN-FIRST:event_passwordFieldActionPerformed
+
         // Recieve input from fields
-        String name = accountTextField.getText();;
-        String password = String.valueOf(passwordField.getPassword()); 
-        
+        String name = accountTextField.getText();
+        ;
+        String password = String.valueOf(passwordField.getPassword());
+
         // Attempt to log in with input
         User user = attemptLogin(name, password);
-        
-        if (user == null) {
+
+        if (user == null)
+        {
             ErrorLabel.setText("No account with a matching username and password was found.");
             return;
-        } 
-        
-        // Open corresponding Home page
-        switch (user.getRole()) {
-        case User.Role.EXAMINEE:
-            new Examinees.Home(user.name).setVisible(true);
-            break;
-        case User.Role.ADMINISTRATOR:
-            new Administrator.Home(user.name).setVisible(true);
-            break;
-        default:
-            // Role unaccounted for
-            break;
         }
-        
+
+        // Open corresponding Home page
+        switch (user.getRole())
+        {
+            case User.Role.EXAMINEE:
+                new Examinees.Home(user.name).setVisible(true);
+                break;
+            case User.Role.ADMINISTRATOR:
+                new Administrator.Home(user.name).setVisible(true);
+                break;
+            default:
+                // Role unaccounted for
+                break;
+        }
+
     }//GEN-LAST:event_passwordFieldActionPerformed
-    
+
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        passwordFieldActionPerformed(evt); 
+        passwordFieldActionPerformed(evt);
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void creditsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditsMenuItemActionPerformed
@@ -252,21 +321,19 @@ public class Login extends javax.swing.JFrame {
         new About().setVisible(true);                             // Creates 'About' window and displays it
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ErrorLabel;
-    private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JLabel accountNameLabel;
-    private javax.swing.JTextField accountTextField;
-    private javax.swing.JMenuItem contactMenuItem;
-    private javax.swing.JButton createAccountButton;
-    private javax.swing.JLabel createAccountLabel1;
-    private javax.swing.JLabel createAccountLabel2;
-    private javax.swing.JPanel createAccountPanel;
-    private javax.swing.JMenuItem creditsMenuItem;
-    private javax.swing.JMenuBar homeMenuBar;
-    private javax.swing.JMenu infoMenu;
-    private javax.swing.JButton loginButton;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JLabel passwordLabel;
-    // End of variables declaration//GEN-END:variables
+    private void instagramMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        openLink("https://www.instagram.com/project_hotel_csc131/");
+    }
+    private void githubMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        openLink("https://github.com/albert-l30/CSC131Project");
+    }
+    // Function used to open a link from the desktop's default browser
+    public static void openLink(String url) {
+        try {
+            java.awt.Desktop.getDesktop().browse(URI.create(url));
+        } catch (java.io.IOException e){}
+    }
 }
+
+
+

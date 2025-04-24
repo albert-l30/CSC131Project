@@ -110,7 +110,7 @@ public class CreateAccount extends javax.swing.JFrame {
         */
         administratorCheckBox.setEnabled(false);
         administratorCheckBox.setText("Administrator");
-        if (administratorNonexistent()) { 
+        if (administratorNonexistent()) {
             administratorCheckBox.setEnabled(true);
         }
 
@@ -199,6 +199,7 @@ public class CreateAccount extends javax.swing.JFrame {
                 and reaching the end of file will always return null, this
                 statement is all that is needed to prove nonexistence.
             */
+
             if (account == null) return true;
         
         } catch (NoSuchFileException x) {
@@ -209,7 +210,7 @@ public class CreateAccount extends javax.swing.JFrame {
         
         return false;
     }
-    
+
     /*
         Writes new user to file and returns a user that will "exist"
         (User.exist() == true) if and only if successful
