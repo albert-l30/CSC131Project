@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Files;
 import java.net.*;
+import java.util.Objects;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,8 +32,13 @@ public class Login extends javax.swing.JFrame
     private javax.swing.JMenuBar homeMenuBar;
     private javax.swing.JMenu infoMenu;
     private javax.swing.JMenu socialmediaMenu;              // Social Media drop down menu for clickable links
-    private javax.swing.JMenuItem instagramMenuItem;        // Instagram button
-    private javax.swing.JMenuItem githubMenuItem;           // Github button
+        // Menu Buttons for Social Media Menu
+    private javax.swing.JMenuItem instagramMenuItem;
+    private javax.swing.JMenuItem githubMenuItem;
+    private javax.swing.JMenuItem facebookMenuItem;
+    private javax.swing.JMenuItem xMenuItem;
+    private javax.swing.JMenuItem linkedinMenuItem;
+        //
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
@@ -74,6 +80,9 @@ public class Login extends javax.swing.JFrame
         socialmediaMenu = new javax.swing.JMenu();
         instagramMenuItem = new javax.swing.JMenuItem();
         githubMenuItem = new javax.swing.JMenuItem();
+        facebookMenuItem = new javax.swing.JMenuItem();
+        xMenuItem = new javax.swing.JMenuItem();
+        linkedinMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
@@ -184,7 +193,11 @@ public class Login extends javax.swing.JFrame
         socialmediaMenu.setText("Social Media");
         socialmediaMenu.add(instagramMenuItem);
         socialmediaMenu.add(githubMenuItem);
+        socialmediaMenu.add(facebookMenuItem);
+        socialmediaMenu.add(xMenuItem);
+        socialmediaMenu.add(linkedinMenuItem);
 
+        // Listeners for each of the social media buttons
         instagramMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/ig.png")));
         instagramMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
@@ -200,6 +213,33 @@ public class Login extends javax.swing.JFrame
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 githubMenuItemActionPerformed(evt);
+            }
+        });
+
+        facebookMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/facebook.png")));
+        facebookMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                facebookMenuItemActionPerformed(evt);
+            }
+        });
+
+        xMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/x.png")));
+        xMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                xMenuItemActionPerformed(evt);
+            }
+        });
+
+        linkedinMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/linkedin.png")));
+        linkedinMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                linkedinMenuItemActionPerformed(evt);
             }
         });
 
@@ -324,8 +364,21 @@ public class Login extends javax.swing.JFrame
     private void instagramMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
         openLink("https://www.instagram.com/project_hotel_csc131/");
     }
+
     private void githubMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
         openLink("https://github.com/albert-l30/CSC131Project");
+    }
+
+    private void facebookMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        openLink("https://www.google.com");
+    }
+
+    private void xMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        openLink("https://www.google.com");
+    }
+
+    private void linkedinMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        openLink("https://www.google.com");
     }
     // Function used to open a link from the desktop's default browser
     public static void openLink(String url) {
