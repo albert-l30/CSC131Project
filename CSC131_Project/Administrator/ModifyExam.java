@@ -414,7 +414,7 @@ public class ModifyExam extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         
-        if (allQuestions.isEmpty())
+        if (index >= allQuestions.size())
             return;
         
         Path quizFolder = null;
