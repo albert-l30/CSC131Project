@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame
         // Menu Buttons for Social Media Menu
     private javax.swing.JMenuItem instagramMenuItem;
     private javax.swing.JMenuItem githubMenuItem;
-    private javax.swing.JMenuItem facebookMenuItem;
+    private javax.swing.JMenuItem blueskyMenuItem;
     private javax.swing.JMenuItem xMenuItem;
     private javax.swing.JMenuItem linkedinMenuItem;
         //
@@ -80,7 +80,7 @@ public class Login extends javax.swing.JFrame
         socialmediaMenu = new javax.swing.JMenu();
         instagramMenuItem = new javax.swing.JMenuItem();
         githubMenuItem = new javax.swing.JMenuItem();
-        facebookMenuItem = new javax.swing.JMenuItem();
+        blueskyMenuItem = new javax.swing.JMenuItem();
         xMenuItem = new javax.swing.JMenuItem();
         linkedinMenuItem = new javax.swing.JMenuItem();
 
@@ -193,12 +193,12 @@ public class Login extends javax.swing.JFrame
         socialmediaMenu.setText("Social Media");
         socialmediaMenu.add(instagramMenuItem);
         socialmediaMenu.add(githubMenuItem);
-        socialmediaMenu.add(facebookMenuItem);
+        socialmediaMenu.add(blueskyMenuItem);
         socialmediaMenu.add(xMenuItem);
         socialmediaMenu.add(linkedinMenuItem);
 
         // Listeners for each of the social media buttons
-        instagramMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/ig.png")));
+        setSocialMediaIcon(instagramMenuItem,"icons/ig.png", "Instagram");
         instagramMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -207,7 +207,7 @@ public class Login extends javax.swing.JFrame
             }
         });
 
-        githubMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/github.png")));
+        setSocialMediaIcon(githubMenuItem,"icons/github.png", "Github");
         githubMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -216,16 +216,16 @@ public class Login extends javax.swing.JFrame
             }
         });
 
-        facebookMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/facebook.png")));
-        facebookMenuItem.addActionListener(new java.awt.event.ActionListener()
+        setSocialMediaIcon(blueskyMenuItem,"icons/bluesky.png", "BlueSky");
+        blueskyMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                facebookMenuItemActionPerformed(evt);
+                blueskyMenuItemActionPerformed(evt);
             }
         });
 
-        xMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/x.png")));
+        setSocialMediaIcon(xMenuItem,"icons/x.png", "X");
         xMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -234,7 +234,7 @@ public class Login extends javax.swing.JFrame
             }
         });
 
-        linkedinMenuItem.setIcon(new ImageIcon(getClass().getResource("icons/linkedin.png")));
+        setSocialMediaIcon(linkedinMenuItem,"icons/linkedin.png", "LinkedIn");
         linkedinMenuItem.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -369,22 +369,36 @@ public class Login extends javax.swing.JFrame
         openLink("https://github.com/albert-l30/CSC131Project");
     }
 
-    private void facebookMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        openLink("https://www.google.com");
+    private void blueskyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        openLink("https://bsky.app/profile/projecthotel131.bsky.social");
     }
 
     private void xMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        openLink("https://www.google.com");
+        openLink("https://x.com/ProjectHotel131");
     }
 
     private void linkedinMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        openLink("https://www.google.com");
+        openLink("https://www.linkedin.com/in/project-hotel-a94880362/");
     }
     // Function used to open a link from the desktop's default browser
     public static void openLink(String url) {
         try {
             java.awt.Desktop.getDesktop().browse(URI.create(url));
         } catch (java.io.IOException e){}
+    }
+    public static void setSocialMediaIcon(JMenuItem menuItem, String directory, String socialmediaName) {
+        try {
+            menuItem.setIcon(new ImageIcon(Login.class.getResource(directory)));
+        }
+        catch (NullPointerException x) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "One or more icons could not be loaded: " + x.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            menuItem.setText(socialmediaName);
+        }
     }
 }
 
