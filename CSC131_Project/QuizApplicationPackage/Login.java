@@ -393,7 +393,7 @@ public class Login extends javax.swing.JFrame
         catch (NullPointerException x) {
             JOptionPane.showMessageDialog(
                     null,
-                    "One or more icons could not be loaded: " + x.getMessage(),
+                    socialmediaName + " icon could not be loaded: " + x.getMessage(),
                     "Error",
                     JOptionPane.ERROR_MESSAGE
             );
