@@ -430,8 +430,8 @@ public class TakeExam extends javax.swing.JFrame {
             }
             
         });
-                
-        topLabel.setText("Timer: " + Double.toString(quizTimer.getDelay() / (double) 1000));
+
+        topLabel.setText("Timer: " + 10.0);
         quizTimer.start();
         incrementTimer.start();
         
@@ -442,16 +442,16 @@ public class TakeExam extends javax.swing.JFrame {
         incrementTimerCount = 0;
         quizTimer.stop();
         incrementTimer.stop();
+        topLabel.setText("Timer: " + 10.0);
         nextButtonActionPerformed(evt);
 
     }
     
     private void incrementTimerActionPerformed(java.awt.event.ActionEvent evt) {
-    
+
         incrementTimerCount++;
         topLabel.setText("Timer: " + Double.toString((quizTimer.getDelay() / (double) 1000) - incrementTimerCount));
-        incrementTimer.restart();
-    
+
     }
     
     private void answerClicked(int answer) {
