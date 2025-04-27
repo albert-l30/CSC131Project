@@ -106,6 +106,11 @@ public class Home extends javax.swing.JFrame {
         viewMenu.setText("View");
 
         viewExamineesMenuItem.setText("Examinees");
+        viewExamineesMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewExamineesMenuItemActionPerformed(evt);
+            }
+        });
         viewMenu.add(viewExamineesMenuItem);
 
         homeMenuBar.add(viewMenu);
@@ -156,6 +161,9 @@ public class Home extends javax.swing.JFrame {
     private void modifyExamMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyExamMenuItemActionPerformed
         new ModifyExam().setVisible(true);
     }//GEN-LAST:event_modifyExamMenuItemActionPerformed
+    private void viewExamineesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
+        new UserList().setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
