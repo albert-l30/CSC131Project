@@ -208,7 +208,8 @@ public class TakeExam extends javax.swing.JFrame {
         resetRadioButtons();
         
         // Restart timer
-        
+        topLabel.setText("Timer: " + 10.0);
+        incrementTimerCount = 0;
         quizTimer.restart();
         incrementTimer.restart();
         
@@ -444,14 +445,12 @@ public class TakeExam extends javax.swing.JFrame {
         incrementTimer.stop();
         topLabel.setText("Timer: " + 10.0);
         nextButtonActionPerformed(evt);
-
     }
     
     private void incrementTimerActionPerformed(java.awt.event.ActionEvent evt) {
 
         incrementTimerCount++;
         topLabel.setText("Timer: " + Double.toString((quizTimer.getDelay() / (double) 1000) - incrementTimerCount));
-
     }
     
     private void answerClicked(int answer) {
