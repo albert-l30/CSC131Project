@@ -54,9 +54,9 @@ public class Credits extends javax.swing.JFrame {
                 "Program Manager - Johnny Nicholson",
                 "Analyst - Nathan Gumataotao",
                 "Designer/Programmer - Nolan Smith",
-                "Programmer - Albert Lehman",
+                "Designer/Programmer - Albert Lehman",
                 "Programmer - Eric Li",
-                "Quality Control - "
+                "Programmer - Jesus Pelaez"
         };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
