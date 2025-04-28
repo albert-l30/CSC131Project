@@ -4,7 +4,29 @@
  */
 package QuizApplicationPackage;
 
+import java.io.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.util.*;
+
 public class Contact extends javax.swing.JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JLabel messageLabel;
+    private javax.swing.JScrollPane messageScrollPane;
+    private javax.swing.JTextArea messageTextArea;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel phoneNumberLabel;
+    private javax.swing.JTextField phoneNumberTextField;
+    private javax.swing.JButton sendButton;
+    private javax.swing.JPanel sendButtonPanel;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form ContactJFrame
@@ -53,13 +75,40 @@ public class Contact extends javax.swing.JFrame {
         messageLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         messageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         messageLabel.setText("Message:");
-
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendButtonActionPerformed(evt);
             }
         });
+        sendButton.setEnabled(false);
+
+        DocumentListener textFieldsListener = new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                checkFields();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                checkFields();
+            }
+
+            public void changedUpdate(DocumentEvent e) {
+                checkFields();
+            }
+
+            private void checkFields() {
+                boolean notEmpty = !nameTextField.getText().trim().isEmpty() &&
+                        !phoneNumberTextField.getText().trim().isEmpty() &&
+                        !emailTextField.getText().trim().isEmpty() &&
+                        !messageTextArea.getText().trim().isEmpty();
+
+                sendButton.setEnabled(notEmpty);
+            }
+        };
+
+        nameTextField.getDocument().addDocumentListener(textFieldsListener);
+        phoneNumberTextField.getDocument().addDocumentListener(textFieldsListener);
+        emailTextField.getDocument().addDocumentListener(textFieldsListener);
+        messageTextArea.getDocument().addDocumentListener(textFieldsListener);
 
         javax.swing.GroupLayout sendButtonPanelLayout = new javax.swing.GroupLayout(sendButtonPanel);
         sendButtonPanel.setLayout(sendButtonPanelLayout);
@@ -129,20 +178,71 @@ public class Contact extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-    
-    }//GEN-LAST:event_sendButtonActionPerformed
+        String filePath = "contact_emails.txt";
+        List<String> toEmailList = new ArrayList<>();
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel emailLabel;
-    private javax.swing.JTextField emailTextField;
-    private javax.swing.JLabel messageLabel;
-    private javax.swing.JScrollPane messageScrollPane;
-    private javax.swing.JTextArea messageTextArea;
-    private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField nameTextField;
-    private javax.swing.JLabel phoneNumberLabel;
-    private javax.swing.JTextField phoneNumberTextField;
-    private javax.swing.JButton sendButton;
-    private javax.swing.JPanel sendButtonPanel;
-    // End of variables declaration//GEN-END:variables
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String email;
+            while ((email = reader.readLine()) != null) {
+                toEmailList.add(email);
+            }
+        } catch (IOException x) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Error reading file: " + x.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+
+        final String fromEmail = "projecthotel131@gmail.com";                                       // email sent from
+        final String fromPassword = "ajxd whom vdjm glli";                                          // passkey for the email
+        final String SMTP_server = "smtp.gmail.com";                                                // using google's SMTP server
+        final String serverPort = "465";
+        final String msgSubject = "CSC131 Quiz Application Contact";
+
+        String msgName = nameTextField.getText();
+        String msgEmail = emailTextField.getText();
+        String msgPhoneNo = phoneNumberTextField.getText();
+        String msgBody = messageTextArea.getText();
+        String contactInfo = "Name: " + msgName + "\nEmail: " + msgEmail + "\nPhone Number: " + msgPhoneNo + "\n\n";
+        String wholeMessage = contactInfo + msgBody;
+
+        Properties props = new Properties();
+        props.put("mail.smtp.user", fromEmail);
+        props.put("mail.smtp.host", SMTP_server);
+        props.put("mail.smtp.port", serverPort);
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.socketFactory.port", serverPort);
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.socketFactory.fallback", "false");
+
+        try {
+            Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, fromPassword);
+                }
+            });
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail));
+            InternetAddress[] address = new InternetAddress[toEmailList.size()];
+            for (int i = 0; i < toEmailList.size(); i++) {
+                address[i] = new InternetAddress(toEmailList.get(i));
+            }
+            message.addRecipients(Message.RecipientType.TO, address);
+            message.setSubject(msgSubject);
+            message.setText(wholeMessage);
+            Transport.send(message);
+            JOptionPane.showMessageDialog(this, "Message sent!");
+        } catch (MessagingException x)
+        {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Error sending message: " + x.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_sendButtonActionPerformed
 }

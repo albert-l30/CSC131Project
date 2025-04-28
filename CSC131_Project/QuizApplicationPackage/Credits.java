@@ -4,7 +4,20 @@
  */
 package QuizApplicationPackage;
 
+import javax.swing.*;
+
 public class Credits extends javax.swing.JFrame {
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel creditsPanel;
+    private javax.swing.JLabel imageLabel;
+    private javax.swing.JLabel memberLabel;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton previousButton;
+    String[] credits;
+    String[] photosDirectory;
+    int currPage = 0;
+    // End of variables declaration//GEN-END:variables
 
     /**
      * Creates new form CreditsJFrame
@@ -28,10 +41,28 @@ public class Credits extends javax.swing.JFrame {
         nextButton = new javax.swing.JButton();
         previousButton = new javax.swing.JButton();
 
+        photosDirectory = new String[] {
+                "photos/1.jpg",
+                "photos/1.jpg",
+                "photos/1.jpg",
+                "photos/1.jpg",
+                "photos/1.jpg",
+                "photos/1.jpg"
+        };
+
+        credits = new String[] {
+                "Program Manager - Johnny Nicholson",
+                "Analyst - Nathan Gumataotao",
+                "Designer/Programmer - Nolan Smith",
+                "Programmer - Albert Lehman",
+                "Programmer - Eric Li",
+                "Quality Control - "
+        };
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Credits");
 
-        memberLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        memberLabel.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         memberLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         nextButton.setText("Next");
@@ -47,6 +78,8 @@ public class Credits extends javax.swing.JFrame {
                 previousButtonActionPerformed(evt);
             }
         });
+
+        loadPage();
 
         javax.swing.GroupLayout creditsPanelLayout = new javax.swing.GroupLayout(creditsPanel);
         creditsPanel.setLayout(creditsPanelLayout);
@@ -103,19 +136,33 @@ public class Credits extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loadPage() {
+        memberLabel.setText(credits[currPage]);
+        try {
+            imageLabel.setIcon(new ImageIcon(Credits.class.getResource(photosDirectory[currPage])));
+        }
+        catch (NullPointerException x) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Photo could not be loaded: " + x.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+        previousButton.setEnabled(currPage != 0);
+        nextButton.setEnabled(currPage != photosDirectory.length - 1);
+    }
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-
+        if (currPage < photosDirectory.length - 1) {
+            currPage++;
+            loadPage();
+        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
-
+        if (currPage > 0) {
+            currPage--;
+            loadPage();
+        }
     }//GEN-LAST:event_previousButtonActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel creditsPanel;
-    private javax.swing.JLabel imageLabel;
-    private javax.swing.JLabel memberLabel;
-    private javax.swing.JButton nextButton;
-    private javax.swing.JButton previousButton;
-    // End of variables declaration//GEN-END:variables
 }
