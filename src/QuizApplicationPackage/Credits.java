@@ -45,9 +45,9 @@ public class Credits extends javax.swing.JFrame {
                 "photos/johnny.jpg",
                 "photos/nathan.jpg",
                 "photos/nolan.jpg",
-                "photos/1.jpg",
-                "photos/1.jpg",
-                "photos/1.jpg"
+                "photos/albert.jpg",
+                "photos/eric.jpg",
+                "photos/jesus.jpg"
         };
 
         credits = new String[] {
