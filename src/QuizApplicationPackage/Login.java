@@ -359,7 +359,7 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_creditsMenuItemActionPerformed
 
     private void contactMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactMenuItemActionPerformed
-       
+       new Contact().setVisible(true);
     }//GEN-LAST:event_contactMenuItemActionPerformed
 
     private void homeMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
