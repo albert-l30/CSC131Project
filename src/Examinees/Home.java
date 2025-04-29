@@ -4,10 +4,7 @@
  */
 package Examinees;
 
-import QuizApplicationPackage.Credits;
-import QuizApplicationPackage.About;
-import QuizApplicationPackage.Contact;
-import QuizApplicationPackage.Credits;
+import QuizApplicationPackage.*;
 
 /**
  *

@@ -4,10 +4,7 @@
  */
 package Administrator;
 
-import QuizApplicationPackage.Credits;
-import QuizApplicationPackage.About;
-import QuizApplicationPackage.Contact;
-import Administrator.UserList;
+import QuizApplicationPackage.*;
 
 /**
  *
