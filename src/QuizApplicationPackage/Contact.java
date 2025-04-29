@@ -178,7 +178,7 @@ public class Contact extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        String filePath = "contact_emails.txt";
+        String filePath = "src/QuizApplicationPackage/emails/contact_emails.txt";
         List<String> toEmailList = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
